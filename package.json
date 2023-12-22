@@ -1,28 +1,34 @@
 {
-  "name": "foody",
-  "version": "1.0.0",
-  "description": "Food ordering application. Swiggy clone.",
-  "scripts": {
-    "start": "parcel index.html",
-    "build": "parcel build index.html",
-    "test": "jest"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/rahulsbeelur/foody.git"
-  },
-  "author": "Rahul S Beelur",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/rahulsbeelur/foody/issues"
-  },
-  "homepage": "https://github.com/rahulsbeelur/foody#readme",
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  },
-  "devDependencies": {
-    "parcel": "^2.10.3",
-    "process": "^0.11.10"
-  }
+    "name": "foody",
+    "version": "1.0.0",
+    "description": "Food ordering application. Swiggy clone.",
+    "scripts": {
+        "start": "parcel index.html",
+        "build": "parcel build index.html",
+        "test": "jest",
+        "format": "prettier --write . --config ./.prettierrc --fix"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/rahulsbeelur/foody.git"
+    },
+    "author": "Rahul S Beelur",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/rahulsbeelur/foody/issues"
+    },
+    "homepage": "https://github.com/rahulsbeelur/foody#readme",
+    "dependencies": {
+        "@types/jest": "^29.5.11",
+        "@types/node": "^20.10.5",
+        "@types/react": "^18.2.45",
+        "@types/react-dom": "^18.2.18",
+        "prettier": "^3.1.1",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0"
+    },
+    "devDependencies": {
+        "parcel": "^2.10.3",
+        "process": "^0.11.10"
+    }
 }
