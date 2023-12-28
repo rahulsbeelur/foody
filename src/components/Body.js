@@ -1,6 +1,7 @@
 import RestaurantCard from './RestaurantCard';
 import { useEffect, useState } from 'react';
 import { getAllRestaurants } from '../services/url-giver';
+import Shimmer from './Shimmer';
 
 const Body = () => {
     const [listOfRestaurants, setListOfRestaurants] = useState([]);
@@ -17,18 +18,43 @@ const Body = () => {
         );
     };
 
+    if (listOfRestaurants.length === 0) {
+        return (
+            <div className="body">
+                <div>Search</div>
+                <div className="filter">
+                    <div>
+                        <button disabled>All Restaurants</button>
+                    </div>
+                    <div>
+                        <button disabled>Top Rated Restaurants</button>
+                    </div>
+                </div>
+                <div className="res-container">
+                    <Shimmer />
+                </div>
+            </div>
+        );
+    }
     return (
         <div className="body">
             <div>Search</div>
             <div className="filter">
                 <div>
-                    <button onClick={() => fetchData()}>All Restaurants</button>
+                    <button
+                        onClick={() => {
+                            setListOfRestaurants([]);
+                            fetchData();
+                        }}>
+                        All Restaurants
+                    </button>
                 </div>
                 <div>
                     <button
                         onClick={() => {
+                            setListOfRestaurants([]);
                             const filteredSetOfRestaurants = listOfRestaurants.filter(
-                                (res) => res.info.avgRating > 4.5
+                                (res) => res.info.avgRating > 4.4
                             );
                             setListOfRestaurants(filteredSetOfRestaurants);
                         }}>
