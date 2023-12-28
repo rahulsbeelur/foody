@@ -14,7 +14,7 @@ const Body = () => {
         const data = await fetch(getAllRestaurants());
         const jsonAllRestaurants = await data.json();
         setListOfRestaurants(
-            jsonAllRestaurants.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle.restaurants
+            jsonAllRestaurants.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle.restaurants
         );
     };
 
@@ -51,7 +51,7 @@ const Body = () => {
                         onClick={() => {
                             setListOfRestaurants([]);
                             const filteredSetOfRestaurants = listOfRestaurants.filter(
-                                (res) => res.info.avgRating > 4.4
+                                (res) => res.info.avgRating > 4.3
                             );
                             setListOfRestaurants(filteredSetOfRestaurants);
                         }}>
