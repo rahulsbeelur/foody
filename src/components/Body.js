@@ -18,25 +18,22 @@ const Body = () => {
         );
     };
 
-    if (listOfRestaurants.length === 0) {
-        return (
-            <div className="body">
-                <div>Search</div>
-                <div className="filter">
-                    <div>
-                        <button disabled>All Restaurants</button>
-                    </div>
-                    <div>
-                        <button disabled>Top Rated Restaurants</button>
-                    </div>
+    return listOfRestaurants.length === 0 ? (
+        <div className="body">
+            <div>Search</div>
+            <div className="filter">
+                <div>
+                    <button disabled>All Restaurants</button>
                 </div>
-                <div className="res-container">
-                    <Shimmer />
+                <div>
+                    <button disabled>Top Rated Restaurants</button>
                 </div>
             </div>
-        );
-    }
-    return (
+            <div className="res-container">
+                <Shimmer />
+            </div>
+        </div>
+    ) : (
         <div className="body">
             <div>Search</div>
             <div className="filter">
