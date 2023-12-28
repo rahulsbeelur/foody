@@ -31,12 +31,14 @@
     background-color: antiquewhite;
     margin: 10px;
     padding: 10px;
+    border-radius: 20px;
 }
 
 .res-logo {
     width: 240px;
     padding: 5px;
     height: 150px;
+    border-radius: 15px;
 }
 
 .app {
@@ -56,4 +58,18 @@
 .delivery {
     display: flex;
     justify-content: space-between;
+}
+
+.shimmer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.shimmer-card {
+    border-radius: 20px;
+    width: 250px;
+    height: 400px;
+    background-color: #f0f0f0;
+    margin: 20px;
 }
