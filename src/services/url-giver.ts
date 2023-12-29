@@ -8,3 +8,12 @@ export const getAllRestaurants = () => {
         )
     );
 };
+
+export const getRestaurantMenu = () => {
+    return (
+        CORS_PROXY +
+        encodeURIComponent(
+            'https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9783692&lng=77.6408356&restaurantId='
+        )
+    );
+};
