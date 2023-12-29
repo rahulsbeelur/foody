@@ -94,3 +94,8 @@
     align-content: center;
     height: fit-content;
 }
+
+.custom-link {
+    text-decoration: none;
+    color: black;
+  }
