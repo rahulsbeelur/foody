@@ -52,6 +52,11 @@
 
 .filter {
     display: flex;
+    gap: 10px;
+}
+
+.search {
+    display: flex;
     gap: 4px;
 }
 
@@ -72,4 +77,20 @@
     height: 400px;
     background-color: #f0f0f0;
     margin: 10px;
+}
+
+.no-restaurants-container {
+    height: 500px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.no-restaurants-data {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    height: fit-content;
 }
