@@ -5,6 +5,9 @@ import Shimmer from './Shimmer';
 
 const Body = () => {
     const [listOfRestaurants, setListOfRestaurants] = useState([]);
+    const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+    const [searchText, setSearchText] = useState('');
+    const [noRestaurants, setNoRestaurants] = useState(false);
 
     useEffect(() => {
         fetchData();
@@ -16,53 +19,87 @@ const Body = () => {
         setListOfRestaurants(
             jsonAllRestaurants.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle.restaurants
         );
+        setFilteredRestaurants(
+            jsonAllRestaurants.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle.restaurants
+        );
     };
 
-    return listOfRestaurants.length === 0 ? (
+    return (
         <div className="body">
-            <div>Search</div>
             <div className="filter">
                 <div>
-                    <button disabled>All Restaurants</button>
+                    <div className="search">
+                        <input
+                            type="text"
+                            value={searchText}
+                            onChange={(e) => setSearchText(e.target.value)}
+                            disabled={listOfRestaurants.length === 0}
+                        />
+                        <button
+                            onClick={() => {
+                                const searchedRestaurants = listOfRestaurants.filter((res) =>
+                                    res.info.name.toLowerCase().includes(searchText.toLowerCase())
+                                );
+                                setFilteredRestaurants(searchedRestaurants);
+                                searchedRestaurants.length === 0
+                                    ? setNoRestaurants(true)
+                                    : setNoRestaurants(false);
+                            }}
+                            disabled={listOfRestaurants.length === 0}>
+                            Search
+                        </button>
+                    </div>
                 </div>
-                <div>
-                    <button disabled>Top Rated Restaurants</button>
-                </div>
-            </div>
-            <div className="res-container">
-                <Shimmer />
-            </div>
-        </div>
-    ) : (
-        <div className="body">
-            <div>Search</div>
-            <div className="filter">
                 <div>
                     <button
                         onClick={() => {
-                            setListOfRestaurants([]);
-                            fetchData();
-                        }}>
+                            setFilteredRestaurants(listOfRestaurants);
+                            setNoRestaurants(false);
+                        }}
+                        disabled={listOfRestaurants.length === 0}>
                         All Restaurants
                     </button>
                 </div>
                 <div>
                     <button
                         onClick={() => {
-                            setListOfRestaurants([]);
+                            setFilteredRestaurants([]);
                             const filteredSetOfRestaurants = listOfRestaurants.filter(
                                 (res) => res.info.avgRating > 4.3
                             );
-                            setListOfRestaurants(filteredSetOfRestaurants);
-                        }}>
+                            setFilteredRestaurants(filteredSetOfRestaurants);
+                            filteredRestaurants.length === 0
+                                ? setNoRestaurants(true)
+                                : setNoRestaurants(false);
+                        }}
+                        disabled={listOfRestaurants.length === 0}>
                         Top Rated Restaurants
                     </button>
                 </div>
             </div>
             <div className="res-container">
-                {listOfRestaurants.map((restaurant) => (
-                    <RestaurantCard key={restaurant.info.id} restData={restaurant} />
-                ))}
+                {noRestaurants ? (
+                    <div className="no-restaurants-container">
+                        <h2 className="no-restaurants-data">
+                            Oops!! There are no restaurants for this search or filter.
+                        </h2>
+                    </div>
+                ) : (
+                    <>
+                        {listOfRestaurants.length === 0 ? (
+                            <Shimmer />
+                        ) : (
+                            <>
+                                {filteredRestaurants.map((restaurant) => (
+                                    <RestaurantCard
+                                        key={restaurant.info.id}
+                                        restData={restaurant}
+                                    />
+                                ))}
+                            </>
+                        )}
+                    </>
+                )}
             </div>
         </div>
     );
