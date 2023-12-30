@@ -1,13 +1,15 @@
 import { Link } from 'react-router-dom';
 
-export const Error = () => {
+const EmptyMenu = () => {
     return (
         <div className="empty-menu-body">
-            <h1>Ooooops!!!</h1>
-            <h2>You came to the wrong page.</h2>
+            <h2>OH OH!!! We do not have the menu for this restaurant at the moment.</h2>
+            <h4>Sorry for the inconvenience. Please call the restaurant.</h4>
             <Link to="/" className="custom-link">
                 <button className="empty-menu-button">Home</button>
             </Link>
         </div>
     );
 };
+
+export default EmptyMenu;
