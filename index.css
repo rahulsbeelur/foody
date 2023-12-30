@@ -3,6 +3,14 @@
     justify-content: space-between;
     background-color: rgb(243, 239, 235);
     border-radius: 20px;
+    position: sticky;
+    top: 0;
+    box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+.body {
+    margin: 0px !important;
 }
 
 .error-page {
@@ -72,15 +80,19 @@
 
 .res-card {
     width: 250px;
-    border: 1px solid black;
     background-color: antiquewhite;
     margin: 10px;
     padding: 10px;
     border-radius: 20px;
+    transition:
+        transform 0.3s,
+        box-shadow 0.3s;
+    box-shadow: 10px 10px 6px rgba(0, 0, 0, 0.1);
 }
 
 .res-card:hover {
-    box-shadow: 4px 4px 1px rgb(154, 145, 145);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 10px -10px rgba(39, 38, 38, 0.5);
 }
 
 .res-logo {
