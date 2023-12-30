@@ -1,12 +1,57 @@
 .header {
     display: flex;
     justify-content: space-between;
-    border: 1px solid black;
-    border-radius: 2px;
+    background-color: rgb(243, 239, 235);
+    border-radius: 20px;
+}
+
+.error-page {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.empty-menu-body {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+.empty-menu-button {
+    width: 100px;
+    height: 60px;
+    background-color: rgb(243, 239, 235);
+    border-radius: 10px;
+    border: 0px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.img-container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.rating {
+    display: flex;
+    gap: 10px;
+}
+
+.rating-icon {
+    width: 20px;
+    height: 20px;
 }
 
 .logo {
-    width: 150px;
+    width: 50px;
+    height: 50px;
 }
 
 .nav-items > ul {
@@ -32,6 +77,10 @@
     margin: 10px;
     padding: 10px;
     border-radius: 20px;
+}
+
+.res-card:hover {
+    box-shadow: 4px 4px 1px rgb(154, 145, 145);
 }
 
 .res-logo {
@@ -98,4 +147,209 @@
 .custom-link {
     text-decoration: none;
     color: black;
-  }
+}
+
+.menu-body {
+    display: flex !important;
+    flex-direction: column;
+    text-align: left;
+    justify-content: center;
+    align-items: center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+}
+
+.res-menu-logo {
+    width: 300px;
+    height: 200px;
+    border-radius: 40px;
+}
+
+.res-name-container {
+    display: flex;
+    justify-content: space-between;
+    justify-self: left;
+    width: 100%;
+    margin-top: 12px;
+}
+
+.res-name {
+    display: flex;
+    flex-wrap: wrap;
+    font-weight: bolder;
+    font-size: 24px;
+    text-wrap: wrap;
+}
+
+.res-menu-cuisines {
+    flex-wrap: wrap;
+    text-wrap: wrap;
+}
+
+.res-area-container {
+    display: flex;
+    gap: 12px;
+}
+
+.res-distance {
+    margin-top: 3px;
+    font-weight: bold;
+}
+
+.res-area {
+    flex-wrap: wrap;
+    font-weight: 400;
+    font-size: 20px;
+    text-wrap: wrap;
+}
+
+.res-expectations {
+    width: 100%;
+    text-align: left;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.menu {
+    width: 100%;
+    text-align: left;
+}
+
+.cost-for-two {
+    font-weight: bold;
+}
+
+.res-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.menu-card-body {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    background-color: rgb(232, 223, 223);
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.res-menu-item-logo-container {
+    width: 90px;
+    display: flex;
+    justify-items: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
+
+.res-menu-item-logo {
+    width: 100%;
+    height: 70px;
+    border-radius: 10px;
+    background-color: white;
+}
+
+.item-info {
+    width: 80%;
+    padding: 10px;
+}
+
+.veg-icon {
+    width: 20px;
+    height: 20px;
+    margin-bottom: 10px;
+}
+
+.item-name {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.item-price {
+    font-weight: 400;
+    font-size: 14px;
+}
+
+.item-description {
+    font-weight: 100;
+    font-size: 12px;
+    margin-top: 10px;
+    color: rgb(92, 91, 91);
+}
+
+.menu-body-shimmer {
+    display: flex !important;
+    flex-direction: column;
+    text-align: left;
+    justify-content: center;
+    align-items: center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.menu-logo-shimmer {
+    width: 300px;
+    height: 200px;
+    background-color: #f0f0f0;
+    margin-top: 40px;
+    border-radius: 40px;
+}
+
+.res-name-shimmer {
+    height: 28px;
+    width: 200px;
+    background-color: #f0f0f0;
+}
+
+.res-menu-cuisines-shimmer {
+    height: 24px;
+    width: 250px;
+    background-color: #f0f0f0;
+    margin-top: 10px;
+}
+
+.rating-shimmer {
+    width: 100px;
+    height: 24px;
+    background-color: #f0f0f0;
+}
+
+.res-expectations-shimmer {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.res-expctation-left-shimmer {
+    width: 100px;
+    height: 24px;
+    background-color: #f0f0f0;
+}
+
+.cost-for-two-shimmer {
+    width: 100px;
+    height: 24px;
+    background-color: #f0f0f0;
+}
+
+.menu-shimmer {
+    width: 100px;
+    height: 36px;
+    margin-top: 40px;
+    background-color: #f0f0f0;
+    margin-right: auto;
+}
+
+.res-menu-shimmer {
+    width: 100%;
+    height: 100px;
+    background-color: #f0f0f0;
+    margin-top: 20px;
+    border-radius: 20px;
+}

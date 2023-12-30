@@ -1,12 +1,14 @@
 import React from 'react';
-import logo from '../../static/foody-logo.png';
+import logo from '../../static/foody-logo.jpg';
 import { Link } from 'react-router-dom';
 
 export const Header = () => (
     <div className="header">
-        <div className="img-container">
-            <img src={logo} className="logo" />
-        </div>
+        <Link to="/">
+            <div className="img-container">
+                <img src={logo} className="logo" />
+            </div>
+        </Link>
         <div className="nav-items">
             <ul>
                 <li>

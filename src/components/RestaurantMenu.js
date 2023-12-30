@@ -1,8 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { getRestaurantMenu } from '../services/url-giver';
-import Shimmer from './Shimmer';
 import { CDN_URL } from '../utils/constants';
+import MenuCard from './MenuCard';
+import star from '../../static/rating.png';
+import MenuShimmer from './MenuShimmer';
+import { Navigate } from 'react-router-dom';
 
 const RestaurantMenu = () => {
     const [restaurantMenu, setRestaurantMenu] = useState(null);
@@ -18,7 +21,7 @@ const RestaurantMenu = () => {
         setRestaurantMenu(jsonData.data);
     };
 
-    if (restaurantMenu === null) return <Shimmer />;
+    if (restaurantMenu === null) return <MenuShimmer />;
 
     const {
         name,
@@ -26,9 +29,7 @@ const RestaurantMenu = () => {
         areaName,
         costForTwoMessage,
         cuisines,
-        totalRatingsString,
         cloudinaryImageId,
-        veg,
         expectationNotifiers,
         sla
     } = restaurantMenu?.cards[0]?.card?.card?.info;
@@ -36,21 +37,35 @@ const RestaurantMenu = () => {
     const { itemCards } =
         restaurantMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
 
+    if (!itemCards) {
+        return <Navigate to="/empty-menu"></Navigate>;
+    }
+
     return (
         <div className="menu-body">
-            <img className="res-logo" src={CDN_URL + cloudinaryImageId}></img>
-            <div className="res-name">{name}</div>
-            <div className="res-menu-cuisines">{cuisines.join(', ')}</div>
-            <div>
-                <div className="res-area">{areaName},</div>
-                <div>{sla.lastMileTravelString}</div>
+            <img className="res-menu-logo" src={CDN_URL + cloudinaryImageId}></img>
+            <div className="res-name-container">
+                <div>
+                    <div className="res-name">{name}</div>
+                    <div className="res-menu-cuisines">{cuisines.join(', ')}</div>
+                    <div className="res-area-container">
+                        <div className="res-area">{areaName},</div>
+                        <div className="res-distance">{sla.lastMileTravelString}</div>
+                    </div>
+                </div>
+                <div className="rating">
+                    <img className="rating-icon" src={star} alt="" />
+                    <div>{avgRating} Stars</div>
+                </div>
             </div>
-            <div>
+            <div className="res-expectations">
                 <div>{expectationNotifiers[0].enrichedText.replace(/<\/?b>/g, '')}</div>
+                <div className="cost-for-two">{costForTwoMessage}</div>
             </div>
+            <h2 className="menu">Menu</h2>
             <div className="res-menu">
                 {itemCards.map((res) => {
-                    return <div key={res?.card?.info?.id}>{res?.card?.info?.name}</div>;
+                    return <MenuCard key={res?.card?.info?.id} info={res?.card?.info}></MenuCard>;
                 })}
             </div>
         </div>
