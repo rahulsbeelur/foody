@@ -9,7 +9,7 @@ import { Error } from './components/ErrorPage';
 import RestaurantMenu from './components/RestaurantMenu';
 import EmptyMenu from './components/EmptyMenu';
 
-const Grocery = lazy(() => import("./components/Grocery"));
+const Grocery = lazy(() => import('./components/Grocery'));
 
 const AppLayout = () => {
     return (
@@ -45,7 +45,11 @@ const router = createBrowserRouter([
             },
             {
                 path: '/grocery',
-                element: <Suspense fallback={<h1>Loading...</h1>}><Grocery /></Suspense>
+                element: (
+                    <Suspense fallback={<h1>Loading...</h1>}>
+                        <Grocery />
+                    </Suspense>
+                )
             }
         ],
         errorElement: <Error />

@@ -33,14 +33,16 @@ const Body = () => {
 
     return (
         <div className="body">
-            <div className="filter">
+            <div className="filter flex  items-center gap-20">
                 <div>
-                    <div className="search">
+                    <div className="search flex items-center">
                         <input
                             type="text"
                             value={searchText}
                             onChange={(e) => setSearchText(e.target.value)}
                             disabled={listOfRestaurants.length === 0}
+                            className="border px-4 py-2 rounded-md focus:outline-none focus:border-blue-500 transition"
+                            placeholder="Search Restaurants"
                         />
                         <button
                             onClick={() => {
@@ -52,7 +54,8 @@ const Body = () => {
                                     ? setNoRestaurants(true)
                                     : setNoRestaurants(false);
                             }}
-                            disabled={listOfRestaurants.length === 0}>
+                            disabled={listOfRestaurants.length === 0}
+                            className="bg-[#faebd7] text-black px-4 py-2 rounded-md focus:outline-none hover:bg-[#dcdcdc] transition shadow-md hover:shadow-none">
                             Search
                         </button>
                     </div>
@@ -63,7 +66,8 @@ const Body = () => {
                             setFilteredRestaurants(listOfRestaurants);
                             setNoRestaurants(false);
                         }}
-                        disabled={listOfRestaurants.length === 0}>
+                        disabled={listOfRestaurants.length === 0}
+                        className="bg-gray-300 text-gray-700 px-6 py-2 rounded-md focus:outline-none hover:bg-gray-400 transition shadow-md hover:shadow-none">
                         All Restaurants
                     </button>
                 </div>
@@ -75,16 +79,18 @@ const Body = () => {
                                 (res) => res.info.avgRating > 4.3
                             );
                             setFilteredRestaurants(filteredSetOfRestaurants);
-                            filteredRestaurants.length === 0
+                            filteredSetOfRestaurants.length === 0
                                 ? setNoRestaurants(true)
                                 : setNoRestaurants(false);
                         }}
-                        disabled={listOfRestaurants.length === 0}>
+                        disabled={listOfRestaurants.length === 0}
+                        className="bg-gray-300 text-gray-700 px-6 py-2 rounded-md focus:outline-none hover:bg-gray-400 transition shadow-md hover:shadow-none">
                         Top Rated Restaurants
                     </button>
                 </div>
             </div>
-            <div className="res-container">
+
+            <div className="res-container max-w-[1200px] mt-10 mx-auto">
                 {noRestaurants ? (
                     <div className="no-restaurants-container">
                         <h2 className="no-restaurants-data">

@@ -7,7 +7,7 @@ const MenuCard = ({ info }) => {
         info?.itemAttribute?.vegClassifier;
     }
     return (
-        <div className="menu-card-body">
+        <div className="menu-card-body shadow-lg hover:shadow-none hover:bg-[#dcdcdc]">
             <div className="item-info">
                 <div>
                     <img

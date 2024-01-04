@@ -9,27 +9,37 @@ export const Header = () => {
         <div className="header">
             <Link to="/">
                 <div className="img-container">
-                    <img src={logo} className="logo" />
+                    <img src={logo} className="logo rounded-[150px]" />
                 </div>
             </Link>
             <div className="nav-items">
                 <ul>
-                    <li>
-                        <div>Online Status: {onlineStatus ? '🟢' : '🔴'}</div>
+                    <li className="flex items-center">
+                        <div className="text-[14px]">{onlineStatus ? 'Online🟢' : 'Offline🔴'}</div>
                     </li>
                     <li>
-                        <Link to="/">Home</Link>
+                        <Link to="/">
+                            <div className="text-[20px]">Home</div>
+                        </Link>
                     </li>
                     <li>
-                        <Link to="/about">About Me</Link>
+                        <Link to="/about">
+                            <div className="text-[20px]">About Me</div>
+                        </Link>
                     </li>
                     <li>
-                        <Link to="/contact">Contact</Link>
+                        <Link to="/contact">
+                            <div className="text-[20px]">Contact</div>
+                        </Link>
                     </li>
                     <li>
-                        <Link to="/grocery">Grocery</Link>
+                        <Link to="/grocery">
+                            <div className="text-[20px]">Grocery</div>
+                        </Link>
                     </li>
-                    <li>Cart</li>
+                    <li>
+                        <div className="text-[20px]">Cart</div>
+                    </li>
                 </ul>
             </div>
         </div>
