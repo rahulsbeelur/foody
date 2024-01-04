@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 import { getRestaurantMenu } from '../services/url-giver';
 
 const useRestaurantMenu = (resId) => {
@@ -14,6 +14,6 @@ const useRestaurantMenu = (resId) => {
     };
 
     return restaurantMenu;
-}
+};
 
 export default useRestaurantMenu;
