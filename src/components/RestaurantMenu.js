@@ -9,7 +9,7 @@ import useRestaurantMenu from '../utils/useRestaurantMenu';
 const RestaurantMenu = () => {
     const { resId } = useParams();
 
-    const restaurantMenu = useRestaurantMenu(resId); 
+    const restaurantMenu = useRestaurantMenu(resId);
 
     if (restaurantMenu === null) return <MenuShimmer />;
 
