@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .header {
     display: flex;
     justify-content: space-between;
@@ -135,8 +139,8 @@
 
 .shimmer-card {
     border-radius: 20px;
-    width: 270px;
-    height: 400px;
+    width: 250px;
+    height: 420px;
     background-color: #f0f0f0;
     margin: 10px;
 }
