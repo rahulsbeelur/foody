@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import Header from './components/Header';
 import Body from './components/Body';
@@ -8,6 +8,8 @@ import About from './components/About';
 import { Error } from './components/ErrorPage';
 import RestaurantMenu from './components/RestaurantMenu';
 import EmptyMenu from './components/EmptyMenu';
+
+const Grocery = lazy(() => import("./components/Grocery"));
 
 const AppLayout = () => {
     return (
@@ -40,6 +42,10 @@ const router = createBrowserRouter([
             {
                 path: '/empty-menu',
                 element: <EmptyMenu />
+            },
+            {
+                path: '/grocery',
+                element: <Suspense fallback={<h1>Loading...</h1>}><Grocery /></Suspense>
             }
         ],
         errorElement: <Error />
