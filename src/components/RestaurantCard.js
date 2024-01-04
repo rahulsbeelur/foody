@@ -18,4 +18,17 @@ const RestaurantCard = ({ restData }) => {
     );
 };
 
+export const withRestaurantCardTopRestaurant = (RestaurantCard) => {
+    return ({ restData }) => {
+        return (
+            <div>
+                <label className="absolute bg-gray-800 p-2 rounded-lg text-white z-[998]">
+                    Top Restaurant
+                </label>
+                <RestaurantCard restData={restData} />
+            </div>
+        );
+    };
+};
+
 export default RestaurantCard;

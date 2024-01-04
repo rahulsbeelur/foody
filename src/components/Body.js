@@ -1,4 +1,4 @@
-import RestaurantCard from './RestaurantCard';
+import RestaurantCard, { withRestaurantCardTopRestaurant } from './RestaurantCard';
 import { useEffect, useState } from 'react';
 import { getAllRestaurants } from '../services/url-giver';
 import Shimmer from './Shimmer';
@@ -28,9 +28,10 @@ const Body = () => {
 
     const onlineStatus = useOnlineStatus();
 
+    const PromotedRestaurantCard = withRestaurantCardTopRestaurant(RestaurantCard);
+
     if (!onlineStatus)
         return <h1>OH OH!! You are offline. Please check your internet connection.</h1>;
-
     return (
         <div className="body">
             <div className="filter flex  items-center gap-20">
@@ -108,7 +109,11 @@ const Body = () => {
                                         key={restaurant.info.id}
                                         to={'/restaurant/' + restaurant.info.id}
                                         className="custom-link">
-                                        <RestaurantCard restData={restaurant} />
+                                        {restaurant.info.avgRating > 4.3 ? (
+                                            <PromotedRestaurantCard restData={restaurant} />
+                                        ) : (
+                                            <RestaurantCard restData={restaurant} />
+                                        )}
                                     </Link>
                                 ))}
                             </>
