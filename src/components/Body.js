@@ -18,12 +18,11 @@ const Body = () => {
     const fetchData = async () => {
         const data = await fetch(getAllRestaurants());
         const jsonAllRestaurants = await data.json();
-        setListOfRestaurants(
-            jsonAllRestaurants.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle.restaurants
-        );
-        setFilteredRestaurants(
-            jsonAllRestaurants.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle.restaurants
-        );
+        const restaurants = jsonAllRestaurants.data?.cards.find(
+            (card) => card?.card?.card?.id === "top_brands_for_you"
+        )?.card?.card?.gridElements?.infoWithStyle.restaurants;
+        setListOfRestaurants(restaurants);
+        setFilteredRestaurants(restaurants);
     };
 
     const onlineStatus = useOnlineStatus();
