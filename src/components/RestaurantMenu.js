@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useParams } from 'react-router';
 import { CDN_URL } from '../utils/constants';
 import star from '../../static/rating.png';
@@ -8,6 +9,7 @@ import RestaurantMenucategory from './RestaurantMenuCategory';
 
 const RestaurantMenu = () => {
     const { resId } = useParams();
+    const [showItems, setShowItems] = useState(0);
 
     const restaurantMenu = useRestaurantMenu(resId);
 
@@ -60,12 +62,14 @@ const RestaurantMenu = () => {
                 <div className="cost-for-two">{costForTwoMessage}</div>
             </div>
             <h2 className="menu">Menu</h2>
-            {categories.map((category) => (
-                <RestaurantMenucategory
-                    key={category?.card?.card?.title}
-                    data={category?.card?.card}
-                />
-            ))}
+            {categories.map((category, index) => (
+                    <RestaurantMenucategory
+                        key={category?.card?.card?.title}
+                        data={category?.card?.card}
+                        showItems={index === showItems? true : false}
+                        setShowItems={() => setShowItems((prev) => (prev === index ? null : index))}
+                    />
+                ))}
         </div>
     );
 };
