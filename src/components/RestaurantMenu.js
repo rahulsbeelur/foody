@@ -12,6 +12,7 @@ const RestaurantMenu = () => {
     const [showItems, setShowItems] = useState(0);
 
     const restaurantMenu = useRestaurantMenu(resId);
+    console.log(restaurantMenu);
 
     if (restaurantMenu === null) return <MenuShimmer />;
 
@@ -32,6 +33,7 @@ const RestaurantMenu = () => {
             item.card.card?.['@type'] ===
             'type.googleapis.com/swiggy.presentation.food.v2.ItemCategory'
     );
+    console.log(categories);
 
     if (!categories) {
         return <Navigate to="/empty-menu"></Navigate>;

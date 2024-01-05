@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import logo from '../../static/foody-logo.jpg';
 import { Link } from 'react-router-dom';
 import useOnlineStatus from '../utils/useOnlineStatus';
+import UserContext from '../utils/UserContext';
 
 export const Header = () => {
     const onlineStatus = useOnlineStatus();
+    const {loggedInUser} = useContext(UserContext);
     return (
         <div className="header">
             <Link to="/">
@@ -39,6 +41,9 @@ export const Header = () => {
                     </li>
                     <li>
                         <div className="text-[20px]">Cart</div>
+                    </li>
+                    <li>
+                        <div className="text-[20px] font-bold">{loggedInUser}</div>
                     </li>
                 </ul>
             </div>
