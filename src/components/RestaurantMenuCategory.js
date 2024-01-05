@@ -1,11 +1,9 @@
-import { useState } from 'react';
 import Accordian from '../../static/accordian.png';
 import ItemList from './ItemList';
 
-const RestaurantMenucategory = ({ data }) => {
-    const [showItems, setShowItems] = useState(false);
+const RestaurantMenucategory = ({ data, showItems, setShowItems }) => {
     const handleClick = () => {
-        setShowItems(!showItems);
+        setShowItems();
     }
     return (
         <div className="w-full my-2">
