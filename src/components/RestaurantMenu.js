@@ -24,7 +24,11 @@ const RestaurantMenu = () => {
         sla
     } = restaurantMenu?.cards[0]?.card?.card?.info;
 
-    const categories = restaurantMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((item) => item.card.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory");
+    const categories = restaurantMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+        (item) =>
+            item.card.card?.['@type'] ===
+            'type.googleapis.com/swiggy.presentation.food.v2.ItemCategory'
+    );
 
     if (!categories) {
         return <Navigate to="/empty-menu"></Navigate>;
@@ -48,11 +52,20 @@ const RestaurantMenu = () => {
                 </div>
             </div>
             <div className="res-expectations">
-                {expectationNotifiers? <div>{expectationNotifiers[0]?.enrichedText.replace(/<\/?b>/g, '')}</div> : ''}
+                {expectationNotifiers ? (
+                    <div>{expectationNotifiers[0]?.enrichedText.replace(/<\/?b>/g, '')}</div>
+                ) : (
+                    ''
+                )}
                 <div className="cost-for-two">{costForTwoMessage}</div>
             </div>
             <h2 className="menu">Menu</h2>
-            {categories.map((category) => <RestaurantMenucategory key={category?.card?.card?.type} data={category?.card?.card}/>)}
+            {categories.map((category) => (
+                <RestaurantMenucategory
+                    key={category?.card?.card?.title}
+                    data={category?.card?.card}
+                />
+            ))}
         </div>
     );
 };

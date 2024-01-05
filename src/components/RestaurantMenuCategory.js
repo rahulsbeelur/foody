@@ -1,20 +1,26 @@
-import MenuCard from './MenuCard';
+import { useState } from 'react';
+import Accordian from '../../static/accordian.png';
+import ItemList from './ItemList';
 
-const RestaurantMenucategory = ({data}) => {
+const RestaurantMenucategory = ({ data }) => {
+    const [showItems, setShowItems] = useState(false);
+    const handleClick = () => {
+        setShowItems(!showItems);
+    }
     return (
-        <div className='w-full my-10'>
-            <h1 className='text-[20px] font-bold'>
-                {data.title}
-            </h1>
-            <div className="res-menu">
-                {data.itemCards.map((item) => {
-                    return (
-                        <MenuCard key={item?.card?.info?.id} info={item?.card?.info}></MenuCard>
-                    )
-                })}
+        <div className="w-full my-2">
+            <div className="p-4 bg-gray-100 rounded-md shadow-lg">
+                <div className="flex justify-between cursor-pointer" onClick={handleClick}>
+                    <h1 className="text-[20px] font-bold">
+                        {data.title} ({data.itemCards.length})
+                    </h1>
+                    {!showItems && <img className="w-5 h-5" src={Accordian} alt="^"></img>}
+                    {showItems && <img className="w-5 h-5 rotate-180" src={Accordian} alt="^"></img>}
+                </div>
+                {showItems && <ItemList items={data.itemCards} />}
             </div>
         </div>
     );
-}
+};
 
 export default RestaurantMenucategory;

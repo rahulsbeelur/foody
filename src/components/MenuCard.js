@@ -3,9 +3,6 @@ import VEG from '../../static/veg-icon.png';
 import NONVEG from '../../static/non-veg-icon.png';
 
 const MenuCard = ({ info }) => {
-    {
-        info?.itemAttribute?.vegClassifier;
-    }
     return (
         <div className="menu-card-body shadow-lg hover:shadow-none hover:bg-[#dcdcdc]">
             <div className="item-info">
@@ -16,7 +13,7 @@ const MenuCard = ({ info }) => {
                         alt={info?.itemAttribute?.vegClassifier}
                     />
                     <div className="item-name">{info?.name}</div>
-                    <div className="item-price">₹{info?.price / 100}</div>
+                    <div className="item-price">₹{info.price? info?.price / 100 : info.defaultPrice / 100}</div>
                 </div>
                 <div className="item-description">{info?.description}</div>
             </div>
@@ -24,7 +21,8 @@ const MenuCard = ({ info }) => {
                 <img
                     className="res-menu-item-logo"
                     src={CDN_URL + info?.imageId}
-                    alt="No Image"></img>
+                    alt=""></img>
+                    <button className='p-1 px-3 text-sm rounded-md font-medium bg-white mt-[-12px] bottom-0 ml-[14px] text-green-600'>Add +</button>
             </div>
         </div>
     );
