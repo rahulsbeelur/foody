@@ -1,15 +1,17 @@
 import RestaurantCard, { withRestaurantCardTopRestaurant } from './RestaurantCard';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { getAllRestaurants } from '../services/url-giver';
 import Shimmer from './Shimmer';
 import { Link } from 'react-router-dom';
 import useOnlineStatus from '../utils/useOnlineStatus';
+import UserContext from '../utils/UserContext';
 
 const Body = () => {
     const [listOfRestaurants, setListOfRestaurants] = useState([]);
     const [filteredRestaurants, setFilteredRestaurants] = useState([]);
     const [searchText, setSearchText] = useState('');
     const [noRestaurants, setNoRestaurants] = useState(false);
+    const [userName, setUpdatedUserName] = useState("");
 
     useEffect(() => {
         fetchData();
@@ -29,11 +31,14 @@ const Body = () => {
 
     const PromotedRestaurantCard = withRestaurantCardTopRestaurant(RestaurantCard);
 
+    const {setUserName} = useContext(UserContext);
+
     if (!onlineStatus)
         return <h1>OH OH!! You are offline. Please check your internet connection.</h1>;
     return (
         <div className="body">
-            <div className="filter flex  items-center gap-20">
+            <div className="flex justify-between">
+                <div className='flex gap-[50px]'>
                 <div>
                     <div className="search flex items-center">
                         <input
@@ -41,7 +46,7 @@ const Body = () => {
                             value={searchText}
                             onChange={(e) => setSearchText(e.target.value)}
                             disabled={listOfRestaurants.length === 0}
-                            className="border px-4 py-2 rounded-md focus:outline-none focus:border-blue-500 transition"
+                            className="border px-4 py-2 rounded-md focus:outline-none focus:border-black transition"
                             placeholder="Search Restaurants"
                         />
                         <button
@@ -86,6 +91,19 @@ const Body = () => {
                         disabled={listOfRestaurants.length === 0}
                         className="bg-gray-300 text-gray-700 px-6 py-2 rounded-md focus:outline-none hover:bg-gray-400 transition shadow-md hover:shadow-none">
                         Top Rated Restaurants
+                    </button>
+                </div>
+                </div>
+                <div className='flex'>
+                    <input value={userName} onChange={(e) => setUpdatedUserName(e.target.value)} className="border px-4 py-2 rounded-md focus:outline-none focus:border-black transition"/>
+                    <button
+                     className="bg-[#faebd7] text-black px-4 py-2 rounded-md focus:outline-none hover:bg-[#dcdcdc] transition shadow-md hover:shadow-none ml-2"
+                        onClick={() => {
+                            setUserName(userName);
+                            setUpdatedUserName('');
+                        }}
+                        >
+                        Change User Name
                     </button>
                 </div>
             </div>
