@@ -27,7 +27,6 @@ const RestaurantMenu = () => {
         sla
     } = restaurantMenu?.cards[0]?.card?.card?.info;
 
-    console.log(restaurantMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards);
 
     const categories = restaurantMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
         (item) =>
