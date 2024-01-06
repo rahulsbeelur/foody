@@ -1,12 +1,16 @@
 import React, { useContext } from 'react';
 import logo from '../../static/foody-logo.jpg';
+import cart from '../../static/cart.png';
 import { Link } from 'react-router-dom';
 import useOnlineStatus from '../utils/useOnlineStatus';
 import UserContext from '../utils/UserContext';
+import { useSelector } from 'react-redux';
 
 export const Header = () => {
     const onlineStatus = useOnlineStatus();
     const {loggedInUser} = useContext(UserContext);
+    const cartItems = useSelector((store) => store.cart.items);
+    const itemsLength = Object.values(cartItems).reduce((accumulator, current) => accumulator + current[0], 0);
     return (
         <div className="header">
             <Link to="/">
@@ -40,7 +44,9 @@ export const Header = () => {
                         </Link>
                     </li>
                     <li>
-                        <div className="text-[20px]">Cart</div>
+                        <Link to="/cart">
+                            <div className="text-[20px] font-bold flex gap-2"><img src={cart} className="w-6 h-6 my-auto" /> ({itemsLength})</div>
+                        </Link>
                     </li>
                     <li>
                         <div className="text-[20px] font-bold">{loggedInUser}</div>
