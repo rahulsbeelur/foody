@@ -9,6 +9,9 @@ import { Error } from './components/ErrorPage';
 import RestaurantMenu from './components/RestaurantMenu';
 import EmptyMenu from './components/EmptyMenu';
 import UserContext from './utils/UserContext';
+import { Provider } from 'react-redux';
+import appStore from './utils/appStores';
+import Cart from './components/Cart';
 
 const Grocery = lazy(() => import('./components/Grocery'));
 
@@ -17,13 +20,15 @@ const AppLayout = () => {
     const [userName, setUserName] = useState(loggedInUser);
 
     return (
-        <div className="app">
+        <Provider store={appStore}>
+            <div className="app">
             <UserContext.Provider value={{"loggedInUser": userName, setUserName}}>
             <Header />
             <ScrollRestoration />
             <Outlet />
             </UserContext.Provider>
         </div>
+        </Provider>
     );
 };
 
@@ -56,6 +61,10 @@ const router = createBrowserRouter([
                         <Grocery />
                     </Suspense>
                 )
+            },
+            {
+                path: '/cart',
+                element: <Cart />
             }
         ],
         errorElement: <Error />
